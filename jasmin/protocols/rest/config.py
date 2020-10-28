@@ -15,8 +15,8 @@ log_format = '%(asctime)s %(levelname)-8s %(process)d %(message)s'
 log_date_format = '%Y-%m-%d %H:%M:%S'
 
 # CELERY
-broker_url = 'amqp://guest:guest@127.0.0.1:5672//'
-result_backend = 'redis://:@127.0.0.1:6379/1'
+broker_url = 'amqp://guest:guest@rabbit-mq:5672//'
+result_backend = 'redis://:@redis:6379/1'
 task_serializer = 'json'
 result_serializer = 'json'
 accept_content = ['json']

@@ -9,8 +9,8 @@ RUN groupadd -r jasmin && useradd -r -g jasmin jasmin
 RUN apt-get update && apt-get install -y \
     libffi-dev \
     libssl-dev \
-    rabbitmq-server \
-    redis-server \
+#    rabbitmq-server \ 
+#    redis-server \
     supervisor \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*

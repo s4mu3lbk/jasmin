@@ -106,12 +106,6 @@ class RateResource(JasminRestApi, JasminHttpApiProxy):
             'password': request.context.get('password')
         })
 
-        # Convert _ to -
-        # Added for compliance with json encoding/decoding constraints on dev env like .Net
-        for k, v in request_args.items():
-            del (request_args[k])
-            request_args[re.sub('_', '-', k)] = v
-
         self.build_response_from_proxy_result(
             response,
             self.call_jasmin(
@@ -134,12 +128,6 @@ class SendResource(JasminRestApi, JasminHttpApiProxy):
             'username': request.context.get('username'),
             'password': request.context.get('password')
         })
-
-        # Convert _ to -
-        # Added for compliance with json encoding/decoding constraints on dev env like .Net
-        for k, v in request_args.items():
-            del (request_args[k])
-            request_args[re.sub('_', '-', k)] = v
 
         self.build_response_from_proxy_result(
             response,
@@ -211,12 +199,6 @@ class SendBatchResource(JasminRestApi, JasminHttpApiProxy):
                               'password': request.context.get('password')}
             message_params.update(params.get('globals', {}))
             message_params.update(_message_params)
-
-            # Convert _ to -
-            # Added for compliance with json encoding/decoding constraints on dev env like .Net
-            for k, v in message_params.items():
-                del (message_params[k])
-                message_params[re.sub('_', '-', k)] = v
 
             # Ignore message if these args are not found
             if 'to' not in message_params or ('content' not in message_params and 'hex-content' not in message_params):
